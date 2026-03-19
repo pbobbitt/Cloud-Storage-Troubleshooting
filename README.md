@@ -1,31 +1,31 @@
-# [Lab Title: Enter Project Name Here]
+# SaaS Storage Optimization & Data Lifecycle Management
 
 ## Executive Summary
-[A 2-3 sentence overview of the project. Focus on the "Problem" you solved and the "Primary Skill" it demonstrates.]
+This project addressed a critical storage exhaustion event (91% capacity) within a Google Workspace environment that threatened service continuity for Gmail and Drive. By performing Root Cause Analysis (RCA) on third-party application sync behavior, I recovered 43% of system capacity and implemented a sustainable archival strategy.
 
-* **Primary Skill:** [e.g., Cloud Administration, Network Security, Scripting]
-* **Certification Alignment:** [e.g., CompTIA A+, Cloud+, Network+]
+* **Primary Skill:** SaaS Administration & Storage Troubleshooting
+* **Certification Alignment:** CompTIA A+, Cloud+
 
 ## The Scenario
-[Describe the "Trigger Event." What was broken, at risk, or needed improvement? Use business-centric language like "risk of service interruption," "security vulnerability," or "operational inefficiency."]
+The User's primary cloud storage reached a 91% Critical threshold, creating an immediate risk of service interruption for incoming emails and document synchronization. The user is a student, so they wanted to keep recent files, but were ok with older files being deleted/archived to free space.
 
 ## Environment & Tools
-* **Platform/OS:** [e.g., Google Workspace, Windows 11, AWS, Linux]
-* **Tools Used:** [List specific software, CLI tools, or physical hardware]
-* **Methodology:** [e.g., 3-2-1 Backup Strategy, CompTIA 6-Step Troubleshooting, NIST Framework]
+* **Platform/OS:** Google Workspace (Cloud), iPadOS (Local), Windows 11 (Archive Host)
+* **Tools Used:** Google Drive, Google one, Google takeout, Notability, NTFS External Storage
+* **Methodology:** CompTIA 6-Step Troubleshooting Theory, Data Lifecycle Management (DLM)
 
 ## Deployment & Execution
 
 ### 1. Requirements & Scope
-* **Goal:** [What does success look like?]
-* **Constraint:** [What limited your options? e.g., No budget, downtime limits, hardware compatibility.]
-* **Scope:** [The scale of the project. e.g., 15GB of data, 5 Virtual Machines, 1 Remote Site.]
+* **Goal:** Reduce cloud storage utilization to the "Green Zone" (sub-50%) while preserving user access to active academic materials.
+* **Constraint:** No Budget / Zero-Cost. The solution must utilize existing hardware (External NTFS Drive) and free tiers of existing SaaS tools.
+* **Scope:** 15 GB Google Workspace account; identifying and migrating approximately 6.5 GB of stale data.
 
 ### 2. Design & Strategy
 [Explain the logic behind your approach before execution.]
 
-* **Immediate Action (The "Fix"):** [Logic for the immediate tactical response. How you'll stop the "bleeding" or create the core MVP.]
-* **Strategic Shift (The "Future-Proof"):** [Logic for the long-term solution. How you'll prevent recurrence or scale the solution.]
+* **Immediate Action (The "Fix"):** Perform a comprehensive storage audit using Google One to identify the primary "storage hogs." The strategy was to move "Cold Data" (archived files) from the cloud to local physical storage, ensuring the user retains access while immediately dropping below the critical 91% threshold.
+* **Strategic Shift (The "Future-Proof"):** During the audit, it was discovered that the user had a note-taking application (Notability) on their iPad that was auto-syncing .note files to the cloud, which took an excessive amount of space. Because the "Live" data was already stored locally on the iPad, these cloud backups were redundant. To prevent future storage exhaustion, the strategy shifted to disabling the redundant auto-backup on the Notability app and archiving the legacy 2022/2023 academic data from the cloud to an external NTFS drive.
 
 ### 3. Implementation Summary
 The project was executed through a methodical 7-phase workflow. For the granular technical procedures, specific CLI commands, and configuration steps associated with each phase, refer to the **[Full Implementation Log](technical_implementation.md)**.
