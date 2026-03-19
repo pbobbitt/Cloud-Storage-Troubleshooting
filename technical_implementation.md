@@ -11,7 +11,7 @@ user granted me access to their windows 11 desktop to troubleshoot. my first ste
 * **Observation:** Most of the data is taken by google drive
 * **Strategic Decision:** seems like a simple fix just need to export this data and archive to a physical drive on the same desktop.
 
-> **Evidence:** See [Initial Storage Audit/Screenshot Name] in Visual Documentation.
+> **Evidence:** See [Before Storage Audit](https://github.com/pbobbitt/SaaS-Storage-Optimization-Data-Lifecycle-Management-Lab/blob/main/Images/Before%20Storage%20Audit) in Visual Documentation.
 
 #### Phase 2: Design & Configuration Strategy
 Established the technical parameters and safety protocols before executing changes.
