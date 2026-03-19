@@ -13,39 +13,50 @@ user granted me access to their windows 11 desktop to troubleshoot. my first ste
 
 > **Evidence:** See [Before Storage Audit](https://github.com/pbobbitt/SaaS-Storage-Optimization-Data-Lifecycle-Management-Lab/blob/main/Images/Before%20Storage%20Audit) in Visual Documentation.
 
-#### Phase 2: Design & Configuration Strategy
-Established the technical parameters and safety protocols before executing changes.
-* **Parameters:** [e.g., Static IP assignments, RAID levels, or Volume Chunking sizes.]
-* **Fault Tolerance Strategy:** [Explain how you protected against failure during the process. e.g., "Created a system restore point" or "Segmented downloads to prevent packet loss corruption."]
+#### Phase 2: Data Export
+Began the export of all Google Drive cloud data via https://takeout.google.com/ , stored downloaded on external hardrive for cold storage backups 
+* **Parameters:** only cloud data for google drive was removed
+* **Fault Tolerance Strategy:** Segmented download of data to 2 GB chunks and verified successful download by inspecting files to ensure data was properly exported.
 
-#### Phase 3: Deployment & Execution
-Initiated the core technical work, moving from the planning phase to active implementation.
-* **Workflow:** [Describe the sequential steps taken. e.g., "Executed a clean install of the OS" or "Initiated the data migration from SaaS to Local."]
-* **Infrastructure Check:** [Describe the pre-flight check. e.g., "Verified destination disk health using CHKDSK."]
 
-#### Phase 4: Integration & Archival
-Organized the environment for long-term stability and performance.
-* **Action:** [e.g., "Moved verified assets from Staging to Production" or "VLAN tagging to isolate guest traffic."]
-* **Technical Justification:** [Why this step matters for performance. e.g., "Separating OS traffic from Data traffic to prevent bottlenecking."]
+#### Phase 3: Data removal
+On Google drive i used the filter commands owner:me -is:starred before:2024-03-19 to isolate all files that have the last modified date of before 1/1/2024 to isolate cold data that can be removed, since the user is a student who uses multiple devices left more recent data available on the cloud so they could still access any data they may need for current classes.
+* **Workflow:** Initiated the data removal from Saas enviroment after backups were verified on SSD
 
-#### Phase 5: Risk Mitigation & Remediation
-Executed the final "Cleanup" or "Cut-over" to restore service or clear the original issue.
-* **Safety Configuration:** [How did you ensure the fix didn't break something else? e.g., "Disabled bidirectional sync to prevent accidental cloud deletion."]
-* **Administrative Action:** [The "Heavy Lifting" step. e.g., "Purged legacy data" or "Replaced the faulty CMOS battery."]
-* **Result:** [The immediate outcome. e.g., "Recovered 50% capacity" or "System successfully passed POST."]
+#### Phase 4: Storage Audit after Data Removal 1
+Checked used storage usage on google one again to see how much space was freed from deleting data pre 2025. data usage dropped from 91% to 74% this was ok but not the big reduction the user was looking for. so i reached back out to the user explain deleting data from before 2024 had reduced data to 71% they advised they were ok to also remove data from 2024 as they still had access to the raw data this was just back up on the could for multi device use. so i reran the filter but this time for data from 2025 used search filter "owner:me before:2025-1-1 -is:starred"
+* **Action:** verified data was removed, contacted client but data utilaztion was still too high so initated removal of more data.
+* **Technical Justification:** The cloud data removed is backed up in cold storage with a SSD, this cloud is just for the user to have access with multiple device so data was removed that had not been modified since jan 1/1 2025
 
-> **Evidence:** See [Post-Action/Verification Screenshot] in Visual Documentation.
+>**Evidence:** See [Post Purge 1](https://github.com/pbobbitt/SaaS-Storage-Optimization-Data-Lifecycle-Management-Lab/blob/main/Images/Post%20Purge%201) in Visual Documentation.
+
+#### Phase 5: Storage Audit after Data Removal 2
+Removinng data last modified from 2024 - 2025 only decreased storage use by 3% this left utlization still at 71% which seemed very high for data only from 2025 - present 2026 so i did a deeper dive.
+
+using https://one.google.com/ doesnt allow to sort files by size so i used drive.google.com/drive/quota to research what was actually using all the space. once i looked there i realized the top results all ended in .note i was unfimiliar but after reseacheing it was discovered this was a file type associated with note taking apps on tablets. i reached back out to the client to see if they used a note taking app on any other devices out side of the desktop they wanted to troubleshoot the said they used a note taking app called Notability which allows them to hand write notes on their tablet. i gained access to the tablet to inspect and when looking at the settings it showed the the app was sysncing all of its files to google drive. importantly after more research i found out every time this app is opened it sends a update pulse for all documents so every note the user had on this had "last modified" time stamps updated which is why files that were older then the previous searches were hidden from my filter attempts. 
+
+to ensure data was not lost i verified that Notability's cloud sync was a one way sync so files are actually saved locally and the cloud can be deleted with no issues. so with the users permission we disabled the auto sync for this Notability app and then removed all files from google drive with the file type .note (no time limit rescrtion as they are all saved locally to the tablet)
+
+* **Risk analysis:** Confirmed Notablity settings before removing cloud backup do prevent data loss.
+* **Administrative Action:** Purged .note file type data.
+* **Result:** Recovered 30% storage capacity lowering data utilization down to 49% 
+
+>**Evidence:**
+>
+>See [Post Purge 2](https://github.com/pbobbitt/SaaS-Storage-Optimization-Data-Lifecycle-Management-Lab/blob/main/Images/Post%20Purge%202) in Visual Documentation.
+>
+>See [Storage used by File](https://github.com/pbobbitt/SaaS-Storage-Optimization-Data-Lifecycle-Management-Lab/blob/main/Images/%09%20Storage%20used%20by%20File%20(Sensitive%20Data%20Redacted)) in Visual Documentation.
+>
+>See [Notability Settings](https://github.com/pbobbitt/SaaS-Storage-Optimization-Data-Lifecycle-Management-Lab/blob/main/Images/Notability%20Settings) in Visual Documentation.
+>
+>See [After Storage Audit](https://github.com/pbobbitt/SaaS-Storage-Optimization-Data-Lifecycle-Management-Lab/blob/main/Images/After%20Storage%20Audit) in Visual Documentation.
 
 #### Phase 6: System Hardening & Preventative Maintenance
-Applied optimization settings to ensure the fix lasts and the system is more resilient than before.
-* **Action:** [e.g., "Updated firmware to latest version" or "Changed upload policy to Storage Saver."]
-* **Technical Justification:** [Explain the 'Optimization' logic. e.g., "Reducing bitrate velocity to extend the lifespan of the storage tier."]
+Cloud Data utilization dropped to acceptible levels of below 50%, verified user is still able to access all relevant cold data, (they were happy i was able to maintain recent hot data access across multiple devices)
 
-#### Phase 7: Infrastructure Redesign & Orchestration
-The "Pro" step: Re-architecting the system to prevent the problem from ever happening again.
-* **Service Redirection:** [How you changed the flow of data or traffic. e.g., "Redirected backups to a secondary node."]
-* **IAM/Access Management:** [Who or what has access now? e.g., "Configured Partner Sharing for unified access."]
-* **Final Result:** [The high-level win. e.g., "Established a scalable architecture that adheres to the Principle of Least Privilege."]
+educated user on how to acess the back ups and warned about the Notablity app backing up to the cloud as .note files hog a lot of storage. 
+* **Action:** Client Education and Data Verification
 
----
+---**Ticket Closed**--
+
 *End of Implementation Log*
