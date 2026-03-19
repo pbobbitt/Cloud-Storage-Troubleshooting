@@ -75,7 +75,7 @@ The project was executed through a methodical 7-phase workflow. For the granular
 ## Technical Competencies Demonstrated
 * **SaaS Administration:** Expert-level navigation of Google Workspace admin and quota tools.
 * **Data Lifecycle Management (DLM):** Applying the logic of archiving "Cold" data to save costs on "Hot" storage resources.
-* **Root Cause Analysis (RCA):** Identifying that application-specific sync behavior—not just file volume—was the driver of storage bloat.
+* **Root Cause Analysis (RCA):** Identifying that application-specific sync behavior was the true issue, not the initially believed file volume.
 
 ## Visual Documentation
 
