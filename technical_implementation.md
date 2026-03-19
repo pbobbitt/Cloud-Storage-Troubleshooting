@@ -5,58 +5,57 @@ This document provides a step-by-step technical record of the project phases. It
 ---
 
 #### Phase 1: Questioning the User / Storage Audit
-User described their issue of having nearly maxxed out storage they gave me access to their desktop and after talking with them they were just wanted to free cloud space but still wanted to keep access to any data. they think that they just had alot of old files but had no idea what the make up or ratio of that data may have been.
+The user described an issue of having nearly maxed-out storage. They granted me access to their desktop, and after consulting with them, it was determined they wanted to free cloud space while maintaining access to all data. They believed the issue was simply a high volume of old files but were unsure of the specific makeup or ratio of that data.
 
-user granted me access to their windows 11 desktop to troubleshoot. my first step was to open https://one.google.com/ to see what was taking up the most space. once viewing the result it turned out that the bulk of data was from google drive. I spoke with the user, and after a bit of back and forth, they were ok with deleting or archiving data. 
-* **Observation:** Most of the data is taken by google drive
-* **Strategic Decision:** seems like a simple fix just need to export this data and archive to a physical drive on the same desktop.
+The user granted me access to their Windows 11 desktop to troubleshoot. My first step was to open https://one.google.com/ to identify the primary storage consumers. The results indicated that the bulk of the data was held within Google Drive. I spoke with the user, and after a brief consultation, they approved the deletion or archival of data.
+* **Observation:** The majority of storage is consumed by Google Drive.
+* **Strategic Decision:** Initiated a plan to export cloud data and archive it to a physical drive on the same desktop for a low-cost, effective solution.
 
 > **Evidence:** See [Before Storage Audit](https://github.com/pbobbitt/SaaS-Storage-Optimization-Data-Lifecycle-Management-Lab/blob/main/Images/Before%20Storage%20Audit) in Visual Documentation.
 
 #### Phase 2: Data Export
-Began the export of all Google Drive cloud data via https://takeout.google.com/ , stored downloaded on external hardrive for cold storage backups 
-* **Parameters:** only cloud data for google drive was removed
-* **Fault Tolerance Strategy:** Segmented download of data to 2 GB chunks and verified successful download by inspecting files to ensure data was properly exported.
+Began the export of all Google Drive cloud data via https://takeout.google.com/. The data was stored and downloaded on an external hard drive for cold storage backups.
+* **Parameters:** Only cloud data for Google Drive was selected for export.
+* **Fault Tolerance Strategy:** Segmented the data download into **2 GB** chunks and verified successful downloads by inspecting files to ensure data was properly exported and readable.
 
-
-#### Phase 3: Data removal
-On Google drive i used the filter commands owner:me -is:starred before:2024-03-19 to isolate all files that have the last modified date of before 1/1/2024 to isolate cold data that can be removed, since the user is a student who uses multiple devices left more recent data available on the cloud so they could still access any data they may need for current classes.
-* **Workflow:** Initiated the data removal from Saas enviroment after backups were verified on SSD
+#### Phase 3: Data Removal
+On Google Drive, I utilized the filter commands `owner:me -is:starred before:2024-03-19` to isolate all files with a "last modified" date before **01/01/2024**. This allowed me to isolate "cold data" for removal. Since the user is a student using multiple devices, I left more recent data available in the cloud to ensure continued access for current classes.
+* **Workflow:** Initiated data removal from the SaaS environment only after backups were verified on the external SSD.
 
 #### Phase 4: Storage Audit after Data Removal 1
-Checked used storage usage on google one again to see how much space was freed from deleting data pre 2025. data usage dropped from 91% to 74% this was ok but not the big reduction the user was looking for. so i reached back out to the user explain deleting data from before 2024 had reduced data to 71% they advised they were ok to also remove data from 2024 as they still had access to the raw data this was just back up on the could for multi device use. so i reran the filter but this time for data from 2025 used search filter "owner:me before:2025-1-1 -is:starred"
-* **Action:** verified data was removed, contacted client but data utilaztion was still too high so initated removal of more data.
-* **Technical Justification:** The cloud data removed is backed up in cold storage with a SSD, this cloud is just for the user to have access with multiple device so data was removed that had not been modified since jan 1/1 2025
+Re-checked storage usage on Google One to verify the space reclaimed from deleting pre-2024 data. Data usage dropped from **91% to 74%**. While improved, this was not the significant reduction the user requested. I explained to the user that deleting data from before 2024 had reduced utilization to roughly **71%** (reflecting sync delays). They approved the removal of 2024 data as well, as they maintained access to the raw data on their local devices. I reran the filter for data prior to 2025 using the search string: `owner:me before:2025-01-01 -is:starred`.
+* **Action:** Verified data removal and contacted the client; however, data utilization remained unacceptably high, prompting further investigation.
+* **Technical Justification:** Cloud data is fully backed up in cold storage on an SSD. Cloud storage is intended only for multi-device access, justifying the removal of data not modified since **01/01/2025**.
 
->**Evidence:** See [Post Purge 1](https://github.com/pbobbitt/SaaS-Storage-Optimization-Data-Lifecycle-Management-Lab/blob/main/Images/Post%20Purge%201) in Visual Documentation.
+> **Evidence:** See [Post Purge 1](https://github.com/pbobbitt/SaaS-Storage-Optimization-Data-Lifecycle-Management-Lab/blob/main/Images/Post%20Purge%201) in Visual Documentation.
 
 #### Phase 5: Storage Audit after Data Removal 2
-Removinng data last modified from 2024 - 2025 only decreased storage use by 3% this left utlization still at 71% which seemed very high for data only from 2025 - present 2026 so i did a deeper dive.
+Removing data modified between 2024 and 2025 only decreased storage use by an additional **3%**, leaving utilization at **71%**. This appeared disproportionately high for a data set spanning only 2025 to the present (2026), necessitating a deeper dive.
 
-using https://one.google.com/ doesnt allow to sort files by size so i used drive.google.com/drive/quota to research what was actually using all the space. once i looked there i realized the top results all ended in .note i was unfimiliar but after reseacheing it was discovered this was a file type associated with note taking apps on tablets. i reached back out to the client to see if they used a note taking app on any other devices out side of the desktop they wanted to troubleshoot the said they used a note taking app called Notability which allows them to hand write notes on their tablet. i gained access to the tablet to inspect and when looking at the settings it showed the the app was sysncing all of its files to google drive. importantly after more research i found out every time this app is opened it sends a update pulse for all documents so every note the user had on this had "last modified" time stamps updated which is why files that were older then the previous searches were hidden from my filter attempts. 
+Since https://one.google.com/ does not allow for sorting files by size, I utilized `drive.google.com/drive/quota` to research the actual storage consumers. I observed that the top results all used the **.note** file extension. Further research identified this as a file type associated with tablet-based note-taking applications. I contacted the client to confirm use of such apps; they identified the app as **Notability**. Upon inspecting the tablet settings, I confirmed the app was syncing all files to Google Drive. Crucially, research indicated that every time the app is opened, it sends an "update pulse" for all documents, refreshing the "last modified" timestamps. This behavior effectively hid these files from my previous date-based filter attempts.
 
-to ensure data was not lost i verified that Notability's cloud sync was a one way sync so files are actually saved locally and the cloud can be deleted with no issues. so with the users permission we disabled the auto sync for this Notability app and then removed all files from google drive with the file type .note (no time limit rescrtion as they are all saved locally to the tablet)
+To ensure data integrity, I verified that Notability's cloud sync is a **one-way sync**, meaning files are saved locally on the tablet and cloud backups can be deleted without impacting the primary data. With the user's permission, I disabled the auto-sync feature in Notability and removed all **.note** files from Google Drive (without time restrictions, as they remain stored locally on the tablet).
 
-* **Risk analysis:** Confirmed Notablity settings before removing cloud backup do prevent data loss.
-* **Administrative Action:** Purged .note file type data.
-* **Result:** Recovered 30% storage capacity lowering data utilization down to 49% 
+* **Risk Analysis:** Confirmed Notability settings to ensure cloud backup removal would not result in data loss.
+* **Administrative Action:** Purged all **.note** file type data from the cloud environment.
+* **Result:** Recovered **30%** storage capacity, lowering data utilization to **48%**.
 
->**Evidence:**
+> **Evidence:**
 >
->See [Post Purge 2](https://github.com/pbobbitt/SaaS-Storage-Optimization-Data-Lifecycle-Management-Lab/blob/main/Images/Post%20Purge%202) in Visual Documentation.
+> See [Post Purge 2](https://github.com/pbobbitt/SaaS-Storage-Optimization-Data-Lifecycle-Management-Lab/blob/main/Images/Post%20Purge%202) in Visual Documentation.
 >
->See [Storage used by File](https://github.com/pbobbitt/SaaS-Storage-Optimization-Data-Lifecycle-Management-Lab/blob/main/Images/%09%20Storage%20used%20by%20File%20(Sensitive%20Data%20Redacted)) in Visual Documentation.
+> See [Storage used by File](https://github.com/pbobbitt/SaaS-Storage-Optimization-Data-Lifecycle-Management-Lab/blob/main/Images/Storage%20used%20by%20File%20(Sensitive%20Data%20Redacted)) in Visual Documentation.
 >
->See [Notability Settings](https://github.com/pbobbitt/SaaS-Storage-Optimization-Data-Lifecycle-Management-Lab/blob/main/Images/Notability%20Settings) in Visual Documentation.
+> See [Notability Settings](https://github.com/pbobbitt/SaaS-Storage-Optimization-Data-Lifecycle-Management-Lab/blob/main/Images/Notability%20Settings) in Visual Documentation.
 >
->See [After Storage Audit](https://github.com/pbobbitt/SaaS-Storage-Optimization-Data-Lifecycle-Management-Lab/blob/main/Images/After%20Storage%20Audit) in Visual Documentation.
+> See [After Storage Audit](https://github.com/pbobbitt/SaaS-Storage-Optimization-Data-Lifecycle-Management-Lab/blob/main/Images/After%20Storage%20Audit) in Visual Documentation.
 
-#### Phase 6: System Hardening & Preventative Maintenance
-Cloud Data utilization dropped to acceptible levels of below 50%, verified user is still able to access all relevant cold data, (they were happy i was able to maintain recent hot data access across multiple devices)
+#### Phase 6: System Hardening & Preventive Maintenance
+Cloud data utilization dropped to an acceptable level (below **50%**). I verified the user is still able to access all relevant cold data and maintained "hot data" access across multiple devices for recent files.
 
-educated user on how to acess the back ups and warned about the Notablity app backing up to the cloud as .note files hog a lot of storage. 
-* **Action:** Client Education and Data Verification
+I educated the user on how to access the physical backups and cautioned them regarding the Notability app's backup behavior, noting that **.note** files consume significant storage.
+* **Action:** Client Education and Data Verification completed.
 
----**Ticket Closed**--
+---**Ticket Closed**---
 
 *End of Implementation Log*
