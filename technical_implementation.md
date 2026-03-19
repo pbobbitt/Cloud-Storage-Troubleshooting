@@ -1,15 +1,17 @@
 # Technical Implementation Log
 
-This document provides a granular, step-by-step technical record of the project phases. It is intended for technical review, auditing, and reproducibility.
+This document provides a step-by-step technical record of the project phases. It is intended for technical review, auditing, and reproducibility.
 
 ---
 
-#### Phase 1: Environment Audit & Identification
-Performed a detailed assessment of the current state to identify bottlenecks, risks, or hardware/software failures.
-* **Observation:** [Describe what you found. e.g., High latency on Subnet B, 97% storage saturation, or POST error code.]
-* **Strategic Decision:** [Explain why you prioritized a specific fix. e.g., "Prioritized resolving the storage hotspot to prevent incoming mail rejection."]
+#### Phase 1: Questioning the User / Storage Audit
+User described their issue of having nearly maxxed out storage they gave me access to their desktop and after talking with them they were just wanted to free cloud space but still wanted to keep access to any data. they think that they just had alot of old files but had no idea what the make up or ratio of that data may have been.
 
-> **Evidence:** See [Initial Audit/Screenshot Name] in Visual Documentation.
+user granted me access to their windows 11 desktop to troubleshoot. my first step was to open https://one.google.com/ to see what was taking up the most space. once viewing the result it turned out that the bulk of data was from google drive. I spoke with the user, and after a bit of back and forth, they were ok with deleting or archiving data. 
+* **Observation:** Most of the data is taken by google drive
+* **Strategic Decision:** seems like a simple fix just need to export this data and archive to a physical drive on the same desktop.
+
+> **Evidence:** See [Initial Storage Audit/Screenshot Name] in Visual Documentation.
 
 #### Phase 2: Design & Configuration Strategy
 Established the technical parameters and safety protocols before executing changes.
