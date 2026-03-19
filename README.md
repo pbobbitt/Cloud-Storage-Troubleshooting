@@ -1,7 +1,7 @@
 # SaaS Storage Optimization & Data Lifecycle Management
 
 ## Executive Summary
-This project addressed a critical storage exhaustion event (91% capacity) within a Google Workspace environment that threatened service continuity for Gmail and Drive. By performing Root Cause Analysis (RCA) on third-party application sync behavior, I recovered 43% of system capacity and implemented a sustainable archival strategy.
+This project addressed a critical storage exhaustion event (91% capacity) within a Google Workspace environment that threatened service continuity for Gmail and Drive. By performing Root Cause Analysis (RCA) I was able to identify the true culptrit was a third-party application sync behavior. For this incident I recovered 43% of system capacity and implemented a sustainable archival strategy.
 
 * **Primary Skill:** SaaS Administration & Storage Troubleshooting
 * **Certification Alignment:** CompTIA A+, Cloud+
@@ -19,10 +19,10 @@ The user's primary cloud storage reached a 91% critical threshold, creating an i
 ### 1. Requirements & Scope
 * **Goal:** Reduce cloud storage utilization to the "Green Zone" (sub-50%) while preserving user access to active academic materials.
 * **Constraint:** No Budget / Zero-Cost. The solution must utilize existing hardware (External NTFS Drive) and free tiers of existing SaaS tools.
-* **Scope:** 15 GB Google Workspace account; identifying and migrating approximately 6.5 GB of stale data.
+* **Scope:** 15 GB Google Workspace account; identifying and migrating approximately 7.5 GB of stale data.
 
 ### 2. Design & Strategy
-* **Immediate Action (The "Fix"):** Perform a comprehensive storage audit using Google One to identify the primary "storage hogs." The strategy focused on moving "Cold Data" (archived files) from the cloud to local physical storage, ensuring the user retains access while immediately dropping below the critical 91% threshold.
+* **Immediate Action (The "Fix"):** Perform a comprehensive storage audit using Google One to identify the primary "storage hogs." The strategy focused on moving "Cold Data" (archived files) from the cloud to local physical storage, ensuring the user retains access to Hot actively used data. while immediately dropping storage utilization below the target 50% threshold.
 * **Strategic Shift (The "Future-Proof"):** During the audit, it was discovered that a note-taking application (Notability) was auto-syncing `.note` files to the cloud, consuming excessive space. Because the "Live" data was already stored locally on the iPad and synced via iCloud, these cloud backups were redundant. To prevent future storage exhaustion, the strategy shifted to disabling the redundant auto-backup and archiving the legacy 2022/2023 academic data to an external NTFS drive.
 
 ### 3. Implementation Summary
@@ -31,8 +31,8 @@ The project was executed through a methodical 7-phase workflow. For the granular
 | Phase | Milestone | Key Technical Action |
 | :--- | :--- | :--- |
 | **Phase 1** | Audit & Discovery | Utilized Google One and Drive Quota tools to identify Google Drive as the primary storage consumer. |
-| **Phase 2** | Design & Planning | Initiated Google Takeout for full account export to establish a "fail-safe" backup before deletion. |
-| **Phase 3** | Deployment/Execution | Executed targeted search filters (`before:2024-03-19`) to isolate legacy cold data. |
+| **Phase 2** | Design & Planning | Initiated Google Takeout for full account export to establish a "fail-safe" backup before any cloud deletion. |
+| **Phase 3** | Cloud Data Deletion | Executed targeted search filters (`before:2024-03-19`) to isolate legacy cold data. |
 | **Phase 4** | Migration/Integration | Migrated 2022–2024 archives to local NTFS storage in 2GB segmented chunks. |
 | **Phase 5** | QA & Verification | Performed a secondary audit; identified `.note` files as the remaining high-utilization culprit. |
 | **Phase 6** | Policy Hardening | Disabled Notability Auto-Sync after verifying 1-way sync logic to prevent future bloat. |
