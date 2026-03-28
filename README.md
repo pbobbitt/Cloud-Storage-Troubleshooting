@@ -42,17 +42,17 @@ This project resolved a critical user issue where cloud storage was 91% full and
 *   **Context:** The user's cloud storage was nearly full (91%), preventing them from saving new work.
 *   **Validation:** Storage was successfully reduced to 48%, providing ample free space for ongoing operations.
 
-**Before:**
-<img src="https://github.com/pbobbitt/Cloud-Storage-Troubleshooting-Resolution-Lab/raw/main/Images/Before%20Storage%20Audit.png" alt="A screenshot of Google One storage showing 91% of space used" width="70%">
+**Before:**  
+<img src="https://github.com/pbobbitt/Cloud-Storage-Troubleshooting-And-Resolution/blob/main/Images/Storage%20Before%2091%25.png" alt="A screenshot of Google One storage showing 91% of space used" width="70%">
 
-**After:**
-<img src="https://github.com/pbobbitt/Cloud-Storage-Troubleshooting-Resolution-Lab/raw/main/Images/After%20Storage%20Audit.png" alt="A screenshot of the Google One storage page showing the final utilization at 48%" width="70%">
+**After:**  
+<img src="https://github.com/pbobbitt/Cloud-Storage-Troubleshooting-And-Resolution/blob/main/Images/Storage%20After%2048%25.png" alt="A screenshot of the Google One storage page showing the final utilization at 48%" width="70%">
 
 ### Root Cause Discovery
 *   **Action:** Used Google Drive's quota tool to sort all files by size.
 *   **Context:** Initial cleanup efforts were not effective, indicating a deeper problem.
 *   **Validation:** Immediately identified that large ".note" files from a single application were consuming the most space, revealing the true root cause.
-<img src="https://github.com/pbobbitt/Cloud-Storage-Troubleshooting-Resolution-Lab/raw/main/Images/Storage%20used%20by%20File%20(Sensitive%20Data%20Redacted).png" alt="A screenshot showing a list of files sorted by size, with .note files taking up the most space." width="70%">
+<img src="https://github.com/pbobbitt/Cloud-Storage-Troubleshooting-And-Resolution/blob/main/Images/synced%20note%20files.png" alt="A screenshot of large .note files" width="49%">&nbsp;<img src="https://github.com/pbobbitt/Cloud-Storage-Troubleshooting-And-Resolution/blob/main/Images/Notably%20Sync%20Settings.png" alt="A screenshot of Notability sync settings" width="49%">
 
 ## Professional Key Takeaways
 *   **Problem-Solving:** I learned that the most obvious solution (deleting old files) isn't always the right one. Digging deeper to find the root cause is essential for providing a permanent fix.
