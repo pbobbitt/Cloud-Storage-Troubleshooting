@@ -1,0 +1,6 @@
+| Resource | Context / Use Case |
+| :--- | :--- |
+| `https://one.google.com/` | This URL is the main dashboard for managing a user's Google account storage across services like Google Drive, Gmail, and Google Photos. It provides a high-level overview of storage consumption, which is essential for the initial audit and ongoing monitoring of the cleanup process. |
+| `https://takeout.google.com/` | Google Takeout is the service used to export user data from their Google account. This was a critical step in creating a complete physical backup of all cloud data before any files were deleted, ensuring no data was lost in the process. |
+| `owner:me -is:starred before:2024-1-1` | This is an advanced search query used within Google Drive to find specific files. It isolates files owned by the user (`owner:me`), excludes any files they have marked as important (`-is:starred`), and filters for files last modified before January 1, 2024 (`before:2024-1-1`). This was used to identify and remove "cold data." |
+| `https://drive.google.com/drive/quota` | This specific URL within Google Drive takes the user directly to a view of their files sorted by size, from largest to smallest. This was instrumental in the root cause analysis, as it bypassed the misleading "last modified" dates and immediately revealed the large `.note` files that were consuming the most space. |
