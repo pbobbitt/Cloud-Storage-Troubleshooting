@@ -1,87 +1,71 @@
 # SaaS Storage Optimization & Data Lifecycle Management
 
-## Executive Summary
-This project addressed a critical storage exhaustion event (91% capacity) within a Google Workspace environment that threatened service continuity for Gmail and Drive. By performing Root Cause Analysis (RCA) I was able to identify the true culptrit was a third-party application sync behavior. For this incident I recovered 43% of system capacity and implemented a sustainable archival strategy.
 
-* **Primary Skill:** SaaS Administration & Storage Troubleshooting
-* **Certification Alignment:** CompTIA A+, Cloud+
+**Professional & Educational Credentials**
+<p align="left">
+  <a href="https://linkedin.com/in/patrick-bobbitt"><img src="https://img.shields.io/badge/LinkedIn-Patrick%20Bobbitt-0072b1?style=for-the-badge&logo=linkedin&logoColor=white" /></a> <img src="https://img.shields.io/badge/Education-WGU%20BS%20Cloud%20%26%20Network%20Engineering%20Student-00ADEE?style=for-the-badge&logo=google-scholar&logoColor=white" /> <a href="https://github.com/pbobbitt/pbobbitt/blob/main/CompTIA%20A%2B%20ce%20certificate.pdf"><img src="https://img.shields.io/badge/Certification-CompTIA%20A%2B-E31837?style=for-the-badge&logo=comptia&logoColor=white" /></a>&nbsp;<a href="mailto:pbobbitt176@gmail.com"><img src="https://img.shields.io/badge/Email-Contact%20Me-red?style=for-the-badge&logo=gmail&logoColor=white" /></a>
+</p>
 
-## The Scenario
-The user's primary cloud storage reached a 91% critical threshold, creating an immediate risk of service interruption for incoming emails and document synchronization. As the user is an active student, the requirement was to maintain "Hot" access to current course materials while identifying and archiving "Cold" legacy data to free up primary cloud resources.
+**Lab Technical Stack**
+<p align="left">
+  <img src="https://img.shields.io/badge/SaaS-Google%20Drive-4285F4?style=for-the-badge&logo=googledrive&logoColor=white" />
+  <img src="https://img.shields.io/badge/Data%20Export-Google%20Takeout-FF5733?style=for-the-badge&logo=google&logoColor=white" />
+  <img src="https://img.shields.io/badge/Operations-Data%20Lifecycle%20Management-2ea44f?style=for-the-badge&logo=helpdesk&logoColor=white" />
+  <img src="https://img.shields.io/badge/Hardware-External%20Hard%20Drive-000000?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0xOCAySDE2djJINGwtMiAySDJWOGgyMHYtNEgyMGwtMi0yeiIvPjxwYXRoIGQ9Ik0yMiAxMEgydjEwYzAgMS4xLjkgMiAyIDJoMTRjMS4xIDAgMi0uOSAyLTJWMTAiLz48L3N2Zz4=&logoColor=white" />
+</p>
 
-## Environment & Tools
-* **Platform/OS:** Google Workspace (Cloud), iPadOS (Local), Windows 11 (Archive Host)
-* **Tools Used:** Google Drive, Google One, Google Takeout, Notability, NTFS External Storage
-* **Methodology:** CompTIA 6-Step Troubleshooting Theory, Data Lifecycle Management (DLM)
+# Project Overview
+This project resolved a critical user issue where cloud storage was 91% full and unusable. I diagnosed the problem, executed a secure data backup to a physical drive, and removed unnecessary files. The investigation uncovered a faulty app sync behavior as the root cause, and fixing it reduced cloud storage usage from 91% to 48%, restoring full functionality for the user.
 
-## Deployment & Execution
+## Tech Stack & Skills
+*   **Systems:** Google Drive, Google Takeout, Google One Storage Management
+*   **Networking/Security:** Data Archiving, Secure Data Backup, Cloud Storage Management
+*   **Core Skills:** Root Cause Analysis, Data Lifecycle Management, User Training & Support, Troubleshooting
 
-### 1. Requirements & Scope
-* **Goal:** Reduce cloud storage utilization to the "Green Zone" (sub-50%) while preserving user access to active academic materials.
-* **Constraint:** No Budget / Zero-Cost. The solution must utilize existing hardware (External NTFS Drive) and free tiers of existing SaaS tools.
-* **Scope:** 15 GB Google Workspace account; identifying and migrating approximately 7.5 GB of stale data.
+## Key Accomplishments
+###   **Reduced Cloud Storage by 47%:**
+  * Executed a data lifecycle plan that cut cloud storage utilization from 91% to a manageable 48%. This immediately solved the user's problem of being unable to save new files and restored the service's usability.
+###   **Pinpointed the Root Cause of Storage Bloat:**
+  * Investigated and identified that a note-taking app's sync behavior was the true source of high storage consumption, not just old files. This prevented the problem from recurring by addressing the cause, not just the symptom.
+###   **Implemented a Secure Backup & Recovery Solution:**
+  * Created a complete physical backup of all cloud data using Google Takeout. This ensured zero data loss and gave the user a secure, long-term archive of their files, independent of the cloud.
 
-### 2. Design & Strategy
-* **Immediate Action (The "Fix"):** Perform a comprehensive storage audit using Google One to identify the primary "storage hogs." The strategy focused on moving "Cold Data" (archived files) from the cloud to local physical storage, ensuring the user retains access to Hot actively used data. while immediately dropping storage utilization below the target 50% threshold.
-* **Strategic Shift (The "Future-Proof"):** During the audit, it was discovered that a note-taking application (Notability) was auto-syncing `.note` files to the cloud, consuming excessive space. Because the "Live" data was already stored locally on the iPad and synced via iCloud, these cloud backups were redundant. To prevent future storage exhaustion, the strategy shifted to disabling the redundant auto-backup and archiving the legacy 2022/2023 academic data to an external NTFS drive.
+## Final Validation & Project Completion
+**The project is 100% complete. The user's cloud storage is fully functional, all data is securely archived on a local drive, and the user has been trained on how to prevent the issue from happening again.**
 
-### 3. Implementation Summary
-The project was executed through a methodical 7-phase workflow. For the granular technical procedures and configuration steps associated with each phase, refer to the **[Full Implementation Log](technical_implementation.md)**.
+> **Full Technical Deep Dive**
+> For the specific CLI commands, granular configuration steps, and a detailed implementation log, please see: **[Implementation Log (Detailed Version)](InsertLinkHere.md)**
 
-| Phase | Milestone | Key Technical Action |
-| :--- | :--- | :--- |
-| **Phase 1** | Audit & Discovery | Utilized Google One and Drive Quota tools to identify Google Drive as the primary storage consumer. |
-| **Phase 2** | Design & Planning | Initiated Google Takeout for full account export to establish a "fail-safe" backup before any cloud deletion. |
-| **Phase 3** | Cloud Data Deletion | Executed targeted search filters (`before:2024-03-19`) to isolate legacy cold data. |
-| **Phase 4** | Migration/Integration | Migrated 2022–2024 archives to local NTFS storage in 2GB segmented chunks. |
-| **Phase 5** | QA & Verification | Performed a secondary audit; identified `.note` files as the remaining high-utilization culprit. |
-| **Phase 6** | Policy Hardening | Disabled Notability Auto-Sync after verifying 1-way sync logic to prevent future bloat. |
-| **Phase 7** | Final Documentation | Verified sub-50% utilization and educated user on local backup access. |
+## Visual Proof
+### Initial Problem vs. Final Result
+*   **Action:** Executed a multi-phase data cleanup and system hardening project.
+*   **Context:** The user's cloud storage was nearly full (91%), preventing them from saving new work.
+*   **Validation:** Storage was successfully reduced to 48%, providing ample free space for ongoing operations.
 
-### 4. Quality Assurance (QA) & Verification
+**Before:**
+<img src="https://github.com/pbobbitt/SaaS-Storage-Optimization-Data-Lifecycle-Management-Lab/raw/main/Images/Before%20Storage%20Audit.png" alt="A screenshot of Google One storage showing 91% of space used" width="70%">
 
-**Technical Validation (The Proof)**
-* **Tool Used:** Google Drive Quota Tool & Local File Explorer.
-* **Logic:** By comparing the cloud quota before and after the manual purge of `.note` files, I verified a 30% instantaneous reduction in used capacity.
+**After:**
+<img src="https://github.com/pbobbitt/SaaS-Storage-Optimization-Data-Lifecycle-Management-Lab/raw/main/Images/After%20Storage%20Audit.png" alt="A screenshot of the Google One storage page showing the final utilization at 48%" width="70%">
 
-| Test Case | Expected Result | Actual Result | Status |
-| :--- | :--- | :--- | :--- |
-| **Integrity Check** | Exported ZIP files open and contain readable files. | Verified via manual inspection of E: Drive. | **Verified** |
-| **Cloud Recovery** | Total storage drops below 7.5 GB (50%). | Final storage confirmed at 48% (7.2 GB). | **Verified** |
-| **Sync Safety** | Deleting cloud `.note` files leaves iPad files intact. | Verified via Notability 1-way sync documentation. | **Verified** |
+### Root Cause Discovery
+*   **Action:** Used Google Drive's quota tool to sort all files by size.
+*   **Context:** Initial cleanup efforts were not effective, indicating a deeper problem.
+*   **Validation:** Immediately identified that large ".note" files from a single application were consuming the most space, revealing the true root cause.
+<img src="https://github.com/pbobbitt/SaaS-Storage-Optimization-Data-Lifecycle-Management-Lab/raw/main/Images/Storage%20used%20by%20File%20(Sensitive%20Data%20Redacted).png" alt="A screenshot showing a list of files sorted by size, with .note files taking up the most space." width="70%">
 
-**Functional & Architectural Validation**
-* **User Experience:** User confirmed incoming emails are no longer blocked and 2026 course materials remain synced.
-* **Storage Tiering:** Established a clear boundary between "Hot" (Cloud/Recent) and "Cold" (Local/Archive) data.
+## Professional Key Takeaways
+*   **Problem-Solving:** I learned that the most obvious solution (deleting old files) isn't always the right one. Digging deeper to find the root cause is essential for providing a permanent fix.
+*   **User-Centric Approach:** I focused on the user's needs throughout the process, ensuring they approved the plan, understood the solution, and felt confident managing their data moving forward. This builds trust and prevents future support tickets.
+*   **Data Integrity:** I prioritized creating a secure, verified backup before deleting any data. This "safety net" is a critical best practice in any IT support role to prevent accidental data loss.
 
-### 5. Documentation & Maintenance
-* **Standard Operating Procedure (SOP):** Perform a manual Google Takeout export at the end of every academic semester.
-* **Audit Schedule:** Review Google Drive Quota once every 90 days to check for "Shadow Syncing" from new applications.
-* **Redundancy (3-2-1 Compliance):** Academic data now exists on the iPad (Active), External SSD (Backup 1), and Google Takeout Archives (Backup 2).
+## Contact & Connect
+How to reach me:
+The best way to contact me is via [LinkedIn](https://www.linkedin.com/in/patrickbobbitt/). For technical inquiries regarding my labs, feel free to open an issue.
 
-## Troubleshooting Log
-
-| Issue Encountered | Root Cause Analysis | Resolution & Verification |
-| :--- | :--- | :--- |
-| **Metadata Mismatch** | Date-based filters failed to find old files. | Discovered Notability "Update Pulse" refreshed "Last Modified" dates daily. Resolved by searching via file extension (`.note`). |
-| **Quota Latency** | Storage bar didn't drop immediately after delete. | Identified Google Drive "Trash" still holding objects. Performed "Empty Trash" to force quota update. |
-
-## Key Achievements & Insights
-* **Risk Mitigation:** Prevented an imminent "Mail Block" that would have disrupted critical academic communications.
-* **Infrastructure Redesign:** Transitioned from a "Cloud-Only" unstructured model to a Hybrid Tiered Storage model.
-* **Data Integrity:** Ensured 100% data retention by using segmented exports and local verification before cloud-side purging.
-* **Efficiency/ROI:** Reclaimed ~7GB of space (avoiding subscription upgrades) using existing local hardware.
-
-## Technical Competencies Demonstrated
-* **SaaS Administration:** Expert-level navigation of Google Workspace admin and quota tools.
-* **Data Lifecycle Management (DLM):** Applying the logic of archiving "Cold" data to save costs on "Hot" storage resources.
-* **Root Cause Analysis (RCA):** Identifying that application-specific sync behavior was the true issue, not the initially believed file volume.
-
-## Visual Documentation
-
-**Initial State / Evidence** <img src="Images/Before Storage Audit.png" alt="91% Storage Utilization" width="70%">
-
-**Post-Configuration / Verification** <img src="Images/After Storage Audit.png" alt="48% Storage Utilization" width="70%">
+<p align="left">
+  <a href="https://linkedin.com/in/patrick-bobbitt"><img src="https://img.shields.io/badge/LinkedIn-Patrick%20Bobbitt-0072b1?style=for-the-badge&logo=linkedin&logoColor=white" /></a>&nbsp;<a href="mailto:pbobbitt176@gmail.com"><img src="https://img.shields.io/badge/Email-Contact%20Me-red?style=for-the-badge&logo=gmail&logoColor=white" /></a>
+</p>
 
 ## Disclaimer & AI Disclosure
-While the **technical architecture, troubleshooting, data migration, and verification** of this lab were performed entirely by the author, **Generative AI** was utilized as a collaborative tool to assist in structured formatting, professional terminology refinement, and documentation of this report.
+While 100% of the technical implementation and verification within this environment was conducted by the author, Generative AI was employed to assist in structuring the final report and ensuring professional terminology standards were met throughout the documentation.
