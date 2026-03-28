@@ -34,7 +34,7 @@ This project resolved a critical user issue where cloud storage was 91% full and
 **The project is 100% complete. The user's cloud storage is fully functional, all data is securely archived on a local drive, and the user has been trained on how to prevent the issue from happening again.**
 
 > **Full Technical Deep Dive**
-> For the specific CLI commands, granular configuration steps, and a detailed implementation log, please see: **[Implementation Log (Detailed Version)](https://github.com/pbobbitt/Cloud-Storage-Troubleshooting-And-Resolution/edit/main/technical_implementation.md)**
+> For the specific CLI commands, granular configuration steps, and a detailed implementation log, please see: **[Implementation Log (Detailed Version)](https://github.com/pbobbitt/Cloud-Storage-Troubleshooting-And-Resolution/blob/main/technical_implementation.md)**
 
 ## Visual Proof
 ### Initial Problem vs. Final Result
