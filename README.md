@@ -1,4 +1,4 @@
-# Cloud Storage Troubleshooting & Resolution
+# Cloud Storage Troubleshooting
 
 
 **Professional & Educational Credentials**
