@@ -10,7 +10,7 @@ This project addresses a user's critical cloud storage issue. By auditing their 
 *   **Developed a low-cost strategy:** Export all cloud data to a local, physical hard drive for secure backup and long-term access.
 
 > **Evidence:** See **Initial Storage Analysis**
-<img src="https://github.com/pbobbitt/SaaS-Storage-Optimization-Data-Lifecycle-Management-Lab/raw/main/Images/Before%20Storage%20Audit.png" alt="A screenshot of Google One storage showing 91% of space used, primarily by Google Drive." width="70%">
+<img src="Images/Storage%20Before%2091%25.png" alt="A screenshot of Google One storage showing 91% of space used, primarily by Google Drive." width="70%">
 <BR>
 
 ## Milestone 2: Secure Data Export & Archiving
@@ -20,7 +20,7 @@ This project addresses a user's critical cloud storage issue. By auditing their 
 *   **Segmented the download into 2 GB chunks** to reduce the risk of file corruption and ensure a reliable backup.
 *   **Manually verified the downloaded files** to confirm the data was exported correctly and was fully accessible from the external drive.
 
-> **Evidence:** See **Post-Purge Storage Levels (Result of this phase)**
+> **Evidence:** See **Post-Purge Storage Levels 74%**
 <img src="https://github.com/pbobbitt/SaaS-Storage-Optimization-Data-Lifecycle-Management-Lab/raw/main/Images/Post%20Purge%201.png" alt="A screenshot of Google One storage after the first data purge, showing utilization has dropped to 74%." width="70%">
 <BR>
 
