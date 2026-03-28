@@ -51,7 +51,7 @@ This project resolved a critical user issue where cloud storage was 91% full and
 ### Root Cause Discovery
 *   **Action:** Used Google Drive's quota tool to sort all files by size.
 *   **Context:** Initial cleanup efforts were not effective, indicating a deeper problem.
-*   **Validation:** Immediately identified that large ".note" files from a single application were consuming the most space, revealing the true root cause.
+*   **Validation:** Immediately identified that large ".note" files from a single application were consuming the most space, revealing the true root cause.  
 <img src="https://github.com/pbobbitt/Cloud-Storage-Troubleshooting-And-Resolution/blob/main/Images/synced%20note%20files.png" alt="A screenshot of large .note files" width="49%">&nbsp;<img src="https://github.com/pbobbitt/Cloud-Storage-Troubleshooting-And-Resolution/blob/main/Images/Notably%20Sync%20Settings.png" alt="A screenshot of Notability sync settings" width="49%">
 
 ## Professional Key Takeaways
