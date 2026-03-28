@@ -1,4 +1,8 @@
-# SaaS Storage Optimization & Data Lifecycle Management
+Of course. Here is the updated project summary with the new title "Cloud Storage Troubleshooting & Resolution" and the requested color change for the hardware badge. All relevant links have been updated to reflect the new project name.
+
+***
+
+# Cloud Storage Troubleshooting & Resolution
 
 
 **Professional & Educational Credentials**
@@ -11,7 +15,7 @@
   <img src="https://img.shields.io/badge/SaaS-Google%20Drive-4285F4?style=for-the-badge&logo=googledrive&logoColor=white" />
   <img src="https://img.shields.io/badge/Data%20Export-Google%20Takeout-FF5733?style=for-the-badge&logo=google&logoColor=white" />
   <img src="https://img.shields.io/badge/Operations-Data%20Lifecycle%20Management-2ea44f?style=for-the-badge&logo=helpdesk&logoColor=white" />
-  <img src="https://img.shields.io/badge/Hardware-External%20Hard%20Drive-000000?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0xOCAySDE2djJINGwtMiAySDJWOGgyMHYtNEgyMGwtMi0yeiIvPjxwYXRoIGQ9Ik0yMiAxMEgydjEwYzAgMS4xLjkgMiAyIDJoMTRjMS4xIDAgMi0uOSAyLTJWMTAiLz48L3N2Zz4=&logoColor=white" />
+  <img src="https://img.shields.io/badge/Hardware-External%20Hard%20Drive-8E44AD?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0xOCAySDE2djJINGwtMiAySDJWOGgyMHYtNEgyMGwtMi0yeiIvPjxwYXRoIGQ9Ik0yMiAxMEgydjEwYzAgMS4xLjkgMiAyIDJoMTRjMS4xIDAgMi0uOSAyLTJWMTAiLz48L3N2Zz4=&logoColor=white" />
 </p>
 
 # Project Overview
@@ -43,16 +47,16 @@ This project resolved a critical user issue where cloud storage was 91% full and
 *   **Validation:** Storage was successfully reduced to 48%, providing ample free space for ongoing operations.
 
 **Before:**
-<img src="https://github.com/pbobbitt/SaaS-Storage-Optimization-Data-Lifecycle-Management-Lab/raw/main/Images/Before%20Storage%20Audit.png" alt="A screenshot of Google One storage showing 91% of space used" width="70%">
+<img src="https://github.com/pbobbitt/Cloud-Storage-Troubleshooting-Resolution-Lab/raw/main/Images/Before%20Storage%20Audit.png" alt="A screenshot of Google One storage showing 91% of space used" width="70%">
 
 **After:**
-<img src="https://github.com/pbobbitt/SaaS-Storage-Optimization-Data-Lifecycle-Management-Lab/raw/main/Images/After%20Storage%20Audit.png" alt="A screenshot of the Google One storage page showing the final utilization at 48%" width="70%">
+<img src="https://github.com/pbobbitt/Cloud-Storage-Troubleshooting-Resolution-Lab/raw/main/Images/After%20Storage%20Audit.png" alt="A screenshot of the Google One storage page showing the final utilization at 48%" width="70%">
 
 ### Root Cause Discovery
 *   **Action:** Used Google Drive's quota tool to sort all files by size.
 *   **Context:** Initial cleanup efforts were not effective, indicating a deeper problem.
 *   **Validation:** Immediately identified that large ".note" files from a single application were consuming the most space, revealing the true root cause.
-<img src="https://github.com/pbobbitt/SaaS-Storage-Optimization-Data-Lifecycle-Management-Lab/raw/main/Images/Storage%20used%20by%20File%20(Sensitive%20Data%20Redacted).png" alt="A screenshot showing a list of files sorted by size, with .note files taking up the most space." width="70%">
+<img src="https://github.com/pbobbitt/Cloud-Storage-Troubleshooting-Resolution-Lab/raw/main/Images/Storage%20used%20by%20File%20(Sensitive%20Data%20Redacted).png" alt="A screenshot showing a list of files sorted by size, with .note files taking up the most space." width="70%">
 
 ## Professional Key Takeaways
 *   **Problem-Solving:** I learned that the most obvious solution (deleting old files) isn't always the right one. Digging deeper to find the root cause is essential for providing a permanent fix.
